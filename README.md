@@ -1,1 +1,4 @@
-# fecc
+# FECC
+
+> Fast Easy C Compiler
+
