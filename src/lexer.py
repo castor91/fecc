@@ -1,18 +1,20 @@
-#import re
+import re
 from tokens.Types import Types
 from tokens.Keyword import Keyword
-
+from tokens.Paren import Symbols
 
 class Lexer:
 
     def __init__(self, input_string):
         self._input = input_string.replace('\n', ' ').split(' ')
         self._tokens = []
-        self._tokensEnum = [Keyword, Types]
+        self._tokensEnum = [Keyword, Types, Symbols]
 
     def lex(self):
         for token in self._input:
+            print '={}='.format(token)
             self._tokens.append([cls.get(token) for cls in self._tokensEnum if cls.has(token)])
+
 
 
 
