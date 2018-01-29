@@ -17,7 +17,11 @@ def string_match(word):
 
 
 def number_match(word):
-    return Constant(word)
+    if word.startswith('0x'):
+        return Constant(word[2:], 16)
+    elif word.startswith('0') and len(word) > 1:
+        return Constant(word[1:], 8)
+    return Constant(word, 10)
 
 
 def paren_match(word):
