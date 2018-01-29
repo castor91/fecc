@@ -1,3 +1,4 @@
 .idea/*
 bin/*
 src/*.pyc
+src/tokens/*.pyc

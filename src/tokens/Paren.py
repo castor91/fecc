@@ -3,4 +3,4 @@ class Paren:
         self._paren = paren
 
     def __str__(self):
-        return self._paren
+        return 'PAREN {}'.format(self._paren)

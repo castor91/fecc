@@ -1,5 +1,5 @@
 import re
-from tokens.Types import Types
+from tokens.Type import Types
 from tokens.Keyword import Keyword
 from tokens.Paren import Symbols
 from tokens.Constant import Constant
