@@ -1,7 +1,7 @@
 import re
-from tokens.Type import Types
-from tokens.Keyword import Keyword
-from tokens.Paren import Symbols
+from fecc_tokens.Type import Types
+from fecc_tokens.Keyword import Keyword
+from fecc_tokens.Paren import Symbols
 
 class Lexer:
 

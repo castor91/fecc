@@ -1,10 +1,10 @@
 import re
-from tokens.Type import Types
-from tokens.Keyword import Keyword
-from tokens.Paren import Symbols
-from tokens.Constant import Constant
-from tokens.Identifier import Identifier
-#from exceptions.LexerException import LexerException
+from fecc_tokens.Type import Types
+from fecc_tokens.Keyword import Keyword
+from fecc_tokens.Paren import Symbols
+from fecc_tokens.Constant import Constant
+from fecc_tokens.Identifier import Identifier
+#from fecc_exceptions.LexerException import LexerException
 
 
 class RegexLexer:

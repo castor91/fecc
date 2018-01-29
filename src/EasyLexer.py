@@ -1,7 +1,8 @@
 import re
-from tokens.EOF import EOF
-from tokens.SOF import SOF
+from fecc_tokens.EOF import EOF
+from fecc_tokens.SOF import SOF
 import Regex
+from fecc_exceptions.LexerException import LexerException
 
 
 class EasyLexer:
@@ -15,8 +16,7 @@ class EasyLexer:
 
         while not isinstance(self._tokens[-1], EOF):
             if len(local_input) == 0:
-                print 'Error size 0' #TODO raise exception
-                break
+                raise LexerException(local_input)
             for regex, function_match in Regex.regexs.items():
                 token = re.match(regex, local_input)
                 if token is not None:

@@ -1,13 +1,13 @@
-from tokens.Semicolon import Semicolon
-from tokens.Paren import Paren
-from tokens.Constant import Constant
-from tokens.Identifier import Identifier
-from tokens.Type import Type
-from tokens.Return import Return
-from tokens.EOF import EOF
+from fecc_tokens.Semicolon import Semicolon
+from fecc_tokens.Paren import Paren
+from fecc_tokens.Constant import Constant
+from fecc_tokens.Identifier import Identifier
+from fecc_tokens.Type import Type
+from fecc_tokens.Return import Return
+from fecc_tokens.EOF import EOF
 
 
-def string_match( word):
+def string_match(word):
     if word == 'int':
         return Type(word)
     elif word == 'return':

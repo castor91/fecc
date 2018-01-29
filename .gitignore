@@ -1,4 +1,5 @@
 .idea/*
 bin/*
 src/*.pyc
-src/tokens/*.pyc
+src/fecc_tokens/*.pyc
+src/fecc_exceptions/*.pyc
