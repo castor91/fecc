@@ -25,7 +25,7 @@ def number_match(word):
 
 
 def paren_match(word):
-    return Paren(word)
+    return Paren.getParen(word)
 
 
 def semicolon_match(_):

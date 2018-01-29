@@ -4,4 +4,4 @@ class LexerException():
         self._input = input
 
     def __str__(self):
-        return 'Unkown token {}'.format(self._input)
+        return 'Unknown input {}'.format(self._input)

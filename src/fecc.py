@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from EasyLexerPackage.EasyLexer import EasyLexer
 import FirstParser
 from sys import argv
@@ -8,8 +10,10 @@ if __name__ == '__main__':
         input_string = ''.join(infile.readlines())
         lex = EasyLexer(input_string)
         tokens = lex.lex()
-        for i in tokens:
-            print i
+        #for i in tokens:
+        #    print i
 
         parse = FirstParser.FirstParser()
-        codes = parse = parse.parse(tokens)
+        codes = parse.parse(tokens)
+        for i in codes:
+            print i

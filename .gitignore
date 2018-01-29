@@ -4,3 +4,4 @@ src/*.pyc
 src/fecc_tokens/*.pyc
 src/fecc_exceptions/*.pyc
 src/EasyLexerPackage/*.pyc
+src/fecc_object/*.pyc
