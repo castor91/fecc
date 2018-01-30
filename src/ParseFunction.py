@@ -1,8 +1,9 @@
-from fecc_object.Function import Function
+from fecc_object.FunctionObject import FunctionObject
 from fecc_object.EOFObject import EOFObject
 from fecc_object.SOFObject import SOFObject
 from fecc_object.ReturnObject import ReturnObject
 from fecc_object.ConstantObject import ConstantObject
+from fecc_object.IdentifierObject import IdentifierObject
 
 from fecc_tokens.Identifier import Identifier
 from fecc_tokens.Return import Return
@@ -17,7 +18,7 @@ def parseFunction(type, tokens):
     name = FP.FirstParser.get_next_token(tokens)
     if not isinstance(name, Identifier):
         raise ParserException(Identifier, name)
-
+    name = IdentifierObject(name)
     params = parseParams(tokens)
     lbrace = FP.FirstParser.get_next_token(tokens)
     if not isinstance(lbrace, Paren.LBrace):
@@ -29,7 +30,7 @@ def parseFunction(type, tokens):
     if not isinstance(rbrace, Paren.RBrace):
         raise ParserException(Paren.RBrace, rbrace)
 
-    return Function(type, name, params, statements)
+    return FunctionObject(type, name, params, statements)
 
 
 def parseEOF():

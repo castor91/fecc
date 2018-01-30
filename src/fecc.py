@@ -5,10 +5,14 @@ from DumpCodeOptimization import DumpCodeOptimization
 from FirstCodeGenerator import FirstCodeGenerator
 import FirstParser
 from sys import argv
+from os import system
+
+OUTPUT_DIR = '/home/ivan/Documents/fecc/bin'
+
 
 if __name__ == '__main__':
     print 'Fast Easy C Compiler [fecc]'
-    with open('{}'.format(argv[1]), 'r') as infile, open('{}.my_out'.format('.'.join(argv[1].split('.')[:-1])), 'w') as outfile:
+    with open('{}'.format(argv[1]), 'r') as infile, open('{}/out.s'.format(OUTPUT_DIR), 'w') as outfile:
         input_string = ''.join(infile.readlines())
         lexer = EasyLexer(input_string)
         tokens = lexer.lex()
@@ -21,3 +25,5 @@ if __name__ == '__main__':
 
         generator = FirstCodeGenerator()
         generator.generate(optimized_code, outfile)
+
+        system('gcc -m32 {0}/out.s -o {0}/out'.format(OUTPUT_DIR))

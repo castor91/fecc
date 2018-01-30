@@ -1,7 +1,9 @@
 class FirstCodeGenerator:
 
     def __init__(self):
-        pass
+        print '[+] Code Generator {}'.format(self.__class__.__name__)
+
 
     def generate(self, optimized_code, output_file):
-        pass
+        for code in optimized_code:
+            code.generate(output_file)
