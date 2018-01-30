@@ -23,7 +23,7 @@ if __name__ == '__main__':
         optimization = DumpCodeOptimization()
         optimized_code = optimization.optimize(codes)
 
-        generator = FirstCodeGenerator()
-        generator.generate(optimized_code, outfile)
+        generator = FirstCodeGenerator.generate(optimized_code, outfile)
 
+        print '[+] Linking and Assemble'
         system('gcc -m32 {0}/out.s -o {0}/out'.format(OUTPUT_DIR))
