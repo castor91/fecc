@@ -7,4 +7,4 @@ class EOFObject:
         output_file.close()
 
     def __str__(self):
-        return 'EOFObject'
+        return ''

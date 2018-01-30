@@ -8,4 +8,4 @@ class ReturnObject:
         output_file.write('ret\n')
 
     def __str__(self):
-        return '{} -> {}'.format(self.__class__.__name__, self._value)
+        return 'RETURN {}'.format(self._value)

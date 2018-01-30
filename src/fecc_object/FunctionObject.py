@@ -1,7 +1,7 @@
 class FunctionObject:
 
-    def __init__(self, return_type, name, params, statements):
-        self._type = return_type
+    def __init__(self, type_obj, name, params, statements):
+        self._type = type_obj
         self._name = name
         self._params = params
         self._statements = statements
@@ -13,4 +13,7 @@ class FunctionObject:
 
     def __str__(self):
         stats = ['\n\t'+str(x) for x in self._statements]
-        return 'FUNCTION:{} {}({}) \n{}\n'.format(self._type, self._name, self._params, ''.join(stats))
+        return 'FUN {} {}:\n' \
+               '\tparams: ({})\n' \
+               '\tbody:' \
+               '\t\t{}\n'.format(self._type, self._name, ', '.join(self._params), '\n\t\t'.join(stats))

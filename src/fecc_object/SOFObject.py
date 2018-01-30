@@ -6,4 +6,4 @@ class SOFObject:
         output_file.write('.globl main\n')
 
     def __str__(self):
-        return 'SOFObject'
+        return ''

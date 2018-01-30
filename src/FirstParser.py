@@ -4,6 +4,8 @@ from fecc_tokens.EOF import EOF
 from fecc_tokens.SOF import SOF
 import ParseFunction as PF
 
+from fecc_object.TypeObject import TypeObject
+
 from fecc_object.EOFObject import EOFObject
 
 
@@ -24,7 +26,7 @@ class FirstParser:
             current = FirstParser.get_next_token(tokens)
 
             if isinstance(current, Type): #Function
-                self._objects.append(PF.parseFunction(current, tokens))
+                self._objects.append(PF.parseFunction(TypeObject(current), tokens))
             elif isinstance(current, EOF): #End of file
                 self._objects.append(PF.parseEOF())
 
