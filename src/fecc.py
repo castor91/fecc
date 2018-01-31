@@ -16,6 +16,10 @@ if __name__ == '__main__':
         lexer = EasyLexer(input_string)
         tokens = lexer.lex()
 
+        #if '-p' in argv:
+            #for t in tokens:
+            #    print t
+
         parser = FirstParser.FirstParser()
         codes = parser.parse(tokens)
         if '-p' in argv:

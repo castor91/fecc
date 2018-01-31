@@ -5,7 +5,6 @@ from fecc_tokens.SOF import SOF
 import ParseFunction as PF
 
 from fecc_object.TypeObject import TypeObject
-
 from fecc_object.EOFObject import EOFObject
 
 
@@ -16,14 +15,14 @@ class FirstParser:
         self._objects = []
 
     def parse(self, tokens):
-        current = FirstParser.get_next_token(tokens)
+        current = FirstParser.pop_next_token(tokens)
         if isinstance(current, SOF):
             self._objects.append(PF.parseSOF())
         else:
             raise ParserException(SOF, current)
 
         while not isinstance(self._objects[-1], EOFObject):
-            current = FirstParser.get_next_token(tokens)
+            current = FirstParser.pop_next_token(tokens)
 
             if isinstance(current, Type): #Function
                 self._objects.append(PF.parseFunction(TypeObject(current), tokens))
@@ -36,7 +35,13 @@ class FirstParser:
         return self._objects
 
     @staticmethod
-    def get_next_token(tokens):
+    def pop_next_token(tokens):
         token = tokens.pop(0)
-        #print 'Next Token: {} {}'.format(token, len(tokens))
+        print 'Next Token: {} {}'.format(token, len(tokens))
+        return token
+
+    @staticmethod
+    def get_next_token(tokens):
+        token = tokens[0]
+        # print 'Next Token: {} {}'.format(token, len(tokens))
         return token
