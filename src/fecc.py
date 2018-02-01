@@ -33,17 +33,19 @@ if __name__ == '__main__':
 
         #Parser Optimization
         optimization = DumbCodeOptimization()
-        optimized_code = optimization.optimizeParsing(codes)
+        optimized_code = optimization.optimize_parsing(codes)
 
         #Code Generation
         out_code = []
         generator = FirstCodeGenerator.generate(optimized_code, out_code)
-
+        for g in out_code:
+            print g
+        raw_input()
         #Code Optimization
-        optimization.optimizeCode(out_code)
+        optimized_code = optimization.optimize_code(out_code)
 
         #File Creation
-        for instruction in out_code:
+        for instruction in optimized_code:
             outfile.write('{}\n'.format(instruction))
 
     print '[+] Linking and Assemble on output file: {}'.format(output_file)

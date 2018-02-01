@@ -6,4 +6,7 @@ class SOFObject(AO):
         super(SOFObject, self).__init__(value)
 
     def generate(self, out_code):
+        out_code.append(GLOBL('main'))
+        '''
         out_code.append('.globl main')
+        '''

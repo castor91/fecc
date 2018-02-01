@@ -7,6 +7,12 @@ class NegationObject(AO):
 
     def generate(self, out_code):
         self._value.generate(out_code)
+        out_code.append(POP('eax'))
+        out_code.append(NEG('eax'))
+        out_code.append(PUSHr('eax'))
+
+        '''
         out_code.append('pop %eax')
         out_code.append('neg %eax')
         out_code.append('push %eax')
+        '''

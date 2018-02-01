@@ -7,5 +7,10 @@ class ReturnObject(AO):
 
     def generate(self, out_code):
         self._value.generate(out_code)
+
+        out_code.append(POP('eax'))
+        out_code.append(RET())
+        '''
         out_code.append('pop %eax'.format(self._value))
         out_code.append('ret')
+        '''
