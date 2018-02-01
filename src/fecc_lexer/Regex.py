@@ -1,5 +1,5 @@
 import re
-import EasyLexerPackage.MatchFunction as MF
+import MatchFunction as MF
 
 #Stage 1
 string_regex = r'^(\s*)([a-zA-Z][a-zA-Z0-9_]*)'

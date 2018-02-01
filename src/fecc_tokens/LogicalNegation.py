@@ -1,4 +1,7 @@
-class LogicalNegation:
+from UnOp import UnOp
+
+
+class LogicalNegation(UnOp):
     def __init__(self):
         pass
 

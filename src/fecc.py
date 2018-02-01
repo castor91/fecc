@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 
-from EasyLexerPackage.EasyLexer import EasyLexer
-from DumbCodeOptimization import DumbCodeOptimization
-from first_object.FirstCodeGenerator import FirstCodeGenerator
-from first_object import FirstParser
+from fecc_lexer.EasyLexer import EasyLexer
+#from first_object.FirstParser import FirstParser
+from fecc_parser.FirstParser import FirstParser
+from fecc_code_generator.FirstCodeGenerator import FirstCodeGenerator
+from fecc_code_optimization.DumbCodeOptimization import DumbCodeOptimization
+
 from sys import argv
 from os import system, path
 
@@ -23,8 +25,8 @@ if __name__ == '__main__':
                 print t
 
         #Parser
-        parser = FirstParser.FirstParser()
-        codes = parser.parse(tokens)
+        parser = FirstParser()
+        codes = parser.parseProgram(tokens)
         if '-p' in argv:
             for c in codes:
                 print c

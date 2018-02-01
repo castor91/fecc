@@ -1,7 +1,7 @@
 import re
 from fecc_tokens.EOF import EOF
 from fecc_tokens.SOF import SOF
-from EasyLexerPackage import Regex
+import Regex
 from fecc_exceptions.LexerException import LexerException
 
 

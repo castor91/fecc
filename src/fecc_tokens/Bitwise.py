@@ -1,4 +1,7 @@
-class Bitwise:
+from UnOp import UnOp
+
+
+class Bitwise(UnOp):
     def __init__(self):
         pass
 
