@@ -13,6 +13,8 @@ if __name__ == '__main__':
     output_file = '{}'.format(path.splitext(input_file)[0]) if len(argv) == 2 else argv[2]
     with open('{}'.format(input_file), 'r') as infile, open('{}.s'.format(output_file), 'w') as outfile:
         input_string = ''.join(infile.readlines())
+
+        #Lexer
         lexer = EasyLexer(input_string)
         tokens = lexer.lex()
 
@@ -20,17 +22,28 @@ if __name__ == '__main__':
             for t in tokens:
                 print t
 
+        #Parser
         parser = FirstParser.FirstParser()
         codes = parser.parse(tokens)
         if '-p' in argv:
             for c in codes:
                 print c
+
+        #Parser Optimization
         optimization = DumbCodeOptimization()
-        optimized_code = optimization.optimize(codes)
+        optimized_code = optimization.optimizeParsing(codes)
 
-        generator = FirstCodeGenerator.generate(optimized_code, outfile)
+        #Code Generation
+        out_code = []
+        generator = FirstCodeGenerator.generate(optimized_code, out_code)
 
+        #Code Optimization
+        optimization.optimizeCode(out_code)
 
-        print '[+] Linking and Assemble on output file: {}'.format(output_file)
-        system('gcc -m32 {0}.s -o {0}'.format(output_file))
-        system('rm {}.s'.format(output_file))
+        #File Creation
+        for instruction in out_code:
+            outfile.write('{}\n'.format(instruction))
+
+    print '[+] Linking and Assemble on output file: {}'.format(output_file)
+    system('gcc -m32 {0}.s -o {0}'.format(output_file))
+    system('rm {}.s'.format(output_file))

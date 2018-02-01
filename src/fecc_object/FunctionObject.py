@@ -6,10 +6,10 @@ class FunctionObject:
         self._params = params
         self._statements = statements
 
-    def generate(self, output_file):
-        output_file.write('{}:\n'.format(self._name.get_name()))
+    def generate(self, out_code):
+        out_code.append('{}:\n'.format(self._name.get_name()))
         for stats in self._statements:
-            stats.generate(output_file)
+            stats.generate(out_code)
 
     def __str__(self):
         stats = ['\n\t'+str(x) for x in self._statements]
