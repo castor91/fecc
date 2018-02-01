@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from EasyLexerPackage.EasyLexer import EasyLexer
-from DumpCodeOptimization import DumpCodeOptimization
+from DumbCodeOptimization import DumbCodeOptimization
 from FirstCodeGenerator import FirstCodeGenerator
 import FirstParser
 from sys import argv
@@ -16,21 +16,21 @@ if __name__ == '__main__':
         lexer = EasyLexer(input_string)
         tokens = lexer.lex()
 
-        #if '-p' in argv:
-            #for t in tokens:
-            #    print t
+        if '-p' in argv:
+            for t in tokens:
+                print t
 
         parser = FirstParser.FirstParser()
         codes = parser.parse(tokens)
         if '-p' in argv:
             for c in codes:
                 print c
-        else:
-            optimization = DumpCodeOptimization()
-            optimized_code = optimization.optimize(codes)
+        optimization = DumbCodeOptimization()
+        optimized_code = optimization.optimize(codes)
 
-            generator = FirstCodeGenerator.generate(optimized_code, outfile)
+        generator = FirstCodeGenerator.generate(optimized_code, outfile)
 
-            print '[+] Linking and Assemble on output file: {}'.format(output_file)
-            system('gcc -m32 {0}.s -o {0}'.format(output_file))
-            system('rm {}.s'.format(output_file))
+
+        print '[+] Linking and Assemble on output file: {}'.format(output_file)
+        system('gcc -m32 {0}.s -o {0}'.format(output_file))
+        system('rm {}.s'.format(output_file))

@@ -1,4 +1,4 @@
-class DumpCodeOptimization:
+class DumbCodeOptimization:
 
     def __init__(self):
         print '[+] Code Optimization {}'.format(self.__class__.__name__)
