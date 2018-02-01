@@ -1,13 +1,13 @@
-from fecc_object.FunctionObject import FunctionObject
-from fecc_object.EOFObject import EOFObject
-from fecc_object.SOFObject import SOFObject
-from fecc_object.ReturnObject import ReturnObject
-from fecc_object.ConstantObject import ConstantObject
-from fecc_object.IdentifierObject import IdentifierObject
-from fecc_object.NegationObject import NegationObject
-from fecc_object.LogicalNegationObject import LogicalNegationObject
-from fecc_object.BitwiseObject import BitwiseObject
-from fecc_object.SemicolonObject import SemicolonObject
+from first_object.FunctionObject import FunctionObject
+from first_object.EOFObject import EOFObject
+from first_object.SOFObject import SOFObject
+from first_object.ReturnObject import ReturnObject
+from first_object.ConstantObject import ConstantObject
+from first_object.IdentifierObject import IdentifierObject
+from first_object.NegationObject import NegationObject
+from first_object.LogicalNegationObject import LogicalNegationObject
+from first_object.BitwiseObject import BitwiseObject
+from first_object.SemicolonObject import SemicolonObject
 
 from fecc_tokens.Identifier import Identifier
 from fecc_tokens.Return import Return
@@ -20,6 +20,7 @@ from fecc_tokens.Bitwise import Bitwise
 
 from fecc_exceptions.ParserException import ParserException
 import FirstParser as FP
+
 
 #Stage 1
 def parseFunction(type, tokens):

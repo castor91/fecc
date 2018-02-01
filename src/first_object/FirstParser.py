@@ -2,10 +2,10 @@ from fecc_exceptions.ParserException import ParserException
 from fecc_tokens.Type import Type
 from fecc_tokens.EOF import EOF
 from fecc_tokens.SOF import SOF
-import ParseFunction as PF
+import first_object.ParseFunction as PF
 
-from fecc_object.TypeObject import TypeObject
-from fecc_object.EOFObject import EOFObject
+from first_object.TypeObject import TypeObject
+from first_object.EOFObject import EOFObject
 
 
 class FirstParser:

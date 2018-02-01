@@ -2,8 +2,8 @@
 
 from EasyLexerPackage.EasyLexer import EasyLexer
 from DumbCodeOptimization import DumbCodeOptimization
-from FirstCodeGenerator import FirstCodeGenerator
-import FirstParser
+from first_object.FirstCodeGenerator import FirstCodeGenerator
+from first_object import FirstParser
 from sys import argv
 from os import system, path
 
