@@ -1,6 +1,6 @@
-from AbstractObject import AbstractObject as AO
+from AbstractObject import *
 
-class ReturnObject(AO):
+class ReturnObject(AbstractObject):
 
     def __init__(self, value):
         super(ReturnObject, self).__init__(value)
@@ -10,7 +10,3 @@ class ReturnObject(AO):
 
         out_code.append(POP('eax'))
         out_code.append(RET())
-        '''
-        out_code.append('pop %eax'.format(self._value))
-        out_code.append('ret')
-        '''

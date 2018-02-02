@@ -1,10 +1,10 @@
-import AbstractMemoryInstruction as AMI
+from AbstractMemoryInstruction import AbstractMemoryInstruction as AMI
 
 
 class POP(AMI):
 
     def __init__(self, registry):
-        super(AMI, self).__init__(registry)
+        super(POP, self).__init__(registry)
 
     def generate(self):
-        return 'pop %{}'.format(self.value)
+        return 'pop %{}'.format(self._value)

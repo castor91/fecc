@@ -1,6 +1,6 @@
-from AbstractObject import AbstractObject as AO
+from AbstractObject import *
 
-class SemicolonObject(AO):
+class SemicolonObject(AbstractObject):
 
     def __init__(self, value):
         super(SemicolonObject, self).__init__(value)

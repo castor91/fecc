@@ -1,6 +1,6 @@
-from AbstractObject import AbstractObject as AO
+from AbstractObject import *
 
-class TypeObject(AO):
+class TypeObject(AbstractObject):
 
     def __init__(self, value):
         super(TypeObject, self).__init__(value.get_type())

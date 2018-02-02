@@ -1,6 +1,6 @@
-from AbstractObject import AbstractObject as AO
+from AbstractObject import *
 
-class NegationObject(AO):
+class NegationObject(AbstractObject):
 
     def __init__(self, value):
         super(NegationObject, self).__init__(value)
@@ -9,10 +9,4 @@ class NegationObject(AO):
         self._value.generate(out_code)
         out_code.append(POP('eax'))
         out_code.append(NEG('eax'))
-        out_code.append(PUSHr('eax'))
-
-        '''
-        out_code.append('pop %eax')
-        out_code.append('neg %eax')
-        out_code.append('push %eax')
-        '''
+        out_code.append(PUSH('eax', is_registry=True))

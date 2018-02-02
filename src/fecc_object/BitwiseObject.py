@@ -1,6 +1,6 @@
-from AbstractObject import AbstractObject as AO
+from AbstractObject import *
 
-class BitwiseObject(AO):
+class BitwiseObject(AbstractObject):
 
     def __init__(self, value):
         super(BitwiseObject, self).__init__(value)
@@ -9,10 +9,4 @@ class BitwiseObject(AO):
         self._value.generate(out_code)
         out_code.append(POP('eax'))
         out_code.append(NOT('eax'))
-        out_code.append(PUSH('eax'))
-
-        '''
-        out_code.append('pop %eax\n')
-        out_code.append('not %eax\n')
-        out_code.append('push %eax\n')
-        '''
+        out_code.append(PUSH('eax', is_registry=True))

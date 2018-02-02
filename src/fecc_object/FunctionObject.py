@@ -1,16 +1,16 @@
-from AbstractObject import AbstractObject as AO
+from AbstractObject import *
 
-class FunctionObject(AO):
+class FunctionObject(AbstractObject):
 
     def __init__(self, value): # value = (type_obj, name, params, statements)
-        #super(FunctionObject, self).__init__(value)
+        super(FunctionObject, self).__init__(value)
         self._type = value[0]
         self._name = value[1]
         self._params = value[2]
         self._statements = value[3]
 
     def generate(self, out_code):
-        out_code.append('{}:\n'.format(self._name.get_name()))
+        self._name.generate(out_code)
         for stats in self._statements:
             stats.generate(out_code)
 

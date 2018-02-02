@@ -1,6 +1,6 @@
-from AbstractObject import AbstractObject as AO
+from AbstractObject import *
 
-class EOFObject(AO):
+class EOFObject(AbstractObject):
 
     def __init__(self, value):
         super(EOFObject, self).__init__(value)

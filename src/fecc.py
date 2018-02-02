@@ -22,8 +22,8 @@ if __name__ == '__main__':
 
         if '-p' in argv:
             for t in tokens:
-                print t
-
+                print t,
+            print
         #Parser
         parser = FirstParser()
         codes = parser.parseProgram(tokens)
@@ -38,15 +38,14 @@ if __name__ == '__main__':
         #Code Generation
         out_code = []
         generator = FirstCodeGenerator.generate(optimized_code, out_code)
-        for g in out_code:
-            print g
-        raw_input()
+
         #Code Optimization
         optimized_code = optimization.optimize_code(out_code)
 
         #File Creation
         for instruction in optimized_code:
-            outfile.write('{}\n'.format(instruction))
+            print instruction.generate()
+            outfile.write('{}\n'.format(instruction.generate()))
 
     print '[+] Linking and Assemble on output file: {}'.format(output_file)
     system('gcc -m32 {0}.s -o {0}'.format(output_file))
