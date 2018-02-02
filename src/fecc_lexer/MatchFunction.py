@@ -8,6 +8,9 @@ from fecc_tokens.EOF import EOF
 from fecc_tokens.Negation import Negation
 from fecc_tokens.Bitwise import Bitwise
 from fecc_tokens.LogicalNegation import LogicalNegation
+from fecc_tokens.Addition import Addition
+from fecc_tokens.Multiplication import Multiplication
+from fecc_tokens.Division import Division
 
 #Stage 1
 def string_match(word):
@@ -47,3 +50,16 @@ def bitwise_match(_):
 
 def logical_negation_match(_):
     return LogicalNegation()
+
+
+#Stage 3
+def addition_match(_):
+    return Addition()
+
+
+def multiplication_match(_):
+    return Multiplication()
+
+
+def division_match(_):
+    return Division()

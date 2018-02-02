@@ -13,6 +13,10 @@ negation_regex = r'^(\s*)(\-)'
 bitwise_regex = r'^(\s*)(~)'
 logical_negation_regex = r'^(\s*)(\!)'
 
+#Stage 3
+addition_regex = r'^(\s*)(+)'
+multiplication_regex = r'(\s*)(\*)'
+division_regex = r'(\s*)(/)'
 
 #Stage 1
 string_regex_compiled = re.compile(string_regex)
@@ -26,6 +30,11 @@ negation_regex_compiled = re.compile(negation_regex)
 bitwise_regex_compiled = re.compile(bitwise_regex)
 logical_negation_regex_compiled = re.compile(logical_negation_regex)
 
+#Stage 3
+addition_regex_compiled = re.compile(addition_regex)
+multiplication_regex_compiled = re.compile(multiplication_regex)
+division_regex_compiled = re.compile(division_regex)
+
 #Final
 regexs = {string_regex_compiled: MF.string_match,
           number_regex_compiled: MF.number_match,
@@ -36,4 +45,8 @@ regexs = {string_regex_compiled: MF.string_match,
           negation_regex_compiled: MF.negation_match,
           bitwise_regex_compiled: MF.bitwise_match,
           logical_negation_regex_compiled: MF.logical_negation_match,
+
+          addition_regex_compiled: MF.addition_match,
+          multiplication_regex_compiled: MF.multiplication_match,
+          division_regex_compiled: MF.division_match,
 }
