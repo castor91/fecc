@@ -5,4 +5,4 @@ class ParserException(Exception):
         self._token = token
 
     def __str__(self):
-        return '{} error: expected {} but {} found.'.format(self.__class__.__name__, self._expected, self._token)
+        return '{} error: expected {} but {} found.'.format(self.__class__.__name__, self._expected, self._token.__class__.__name__)

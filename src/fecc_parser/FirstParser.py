@@ -37,7 +37,7 @@ class FirstParser:
     @staticmethod
     def pop_next_token(tokens):
         token = tokens.pop(0)
-        #print 'Next Token: {} {}'.format(token, len(tokens))
+        print 'Next Token: {} {}'.format(token, len(tokens))
         return token
 
     @staticmethod

@@ -4,6 +4,7 @@ from AbstractGenericInstruction import AbstractGenericInstruction as AbstractGen
 from AbstractMemoryInstruction import AbstractMemoryInstruction as AbstractMemoryInstruction
 from AbstractMoveInstruction import AbstractMoveInstruction as AbstractMoveInstruction
 from AbstractUnOpInstruction import AbstractUnOpInstruction as AbstractUnOpInstruction
+from AbstractBinOpInstruction import AbstractBinOpInstruction as AbstractBinOpInstruction
 
 from CMPL import CMPL as CMPL
 from GLOBL import GLOBL as GLOBL
@@ -15,3 +16,6 @@ from PUSH import PUSH as PUSH
 from RET import RET as RET
 from SETE import SETE as SETE
 from String import String as String
+from ADD import ADD as ADD
+from iMUL import iMUL as iMUL
+from iDIV import iDIV as iDIV

@@ -14,7 +14,7 @@ bitwise_regex = r'^(\s*)(~)'
 logical_negation_regex = r'^(\s*)(\!)'
 
 #Stage 3
-addition_regex = r'^(\s*)(+)'
+addition_regex = r'^(\s*)(\+)'
 multiplication_regex = r'(\s*)(\*)'
 division_regex = r'(\s*)(/)'
 

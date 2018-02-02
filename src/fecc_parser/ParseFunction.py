@@ -8,6 +8,9 @@ from fecc_object.NegationObject import NegationObject
 from fecc_object.LogicalNegationObject import LogicalNegationObject
 from fecc_object.BitwiseObject import BitwiseObject
 from fecc_object.SemicolonObject import SemicolonObject
+from fecc_object.AdditionObject import AdditionObject
+from fecc_object.MultiplicationObject import MultiplicationObject
+from fecc_object.DivisionObject import DivisionObject
 
 from fecc_tokens.Identifier import Identifier
 from fecc_tokens.Return import Return
@@ -18,6 +21,10 @@ from fecc_tokens.Negation import Negation
 from fecc_tokens.LogicalNegation import LogicalNegation
 from fecc_tokens.Bitwise import Bitwise
 from fecc_tokens.UnOp import UnOp
+from fecc_tokens.BinOp import BinOp
+from fecc_tokens.Addition import Addition
+from fecc_tokens.Multiplication import Multiplication
+from fecc_tokens.Division import Division
 
 from fecc_exceptions.ParserException import ParserException
 import FirstParser as FP
@@ -89,18 +96,63 @@ def parse_constant(constant, tokens):
         raise ParserException(Constant, constant)
     return ConstantObject(constant)
 
+
 #Stage 2
 def parse_expression(tokens):
+    #next_token = FP.FirstParser.pop_next_token(tokens)
+    #if isinstance(next_token, Term):
+    first = parse_term(tokens)
+    symbol = FP.FirstParser.get_next_token(tokens)
+    #while isinstance(symbol, Addition) or isinstance(symbol, Negation):
+    if isinstance(symbol, Addition):
+        FP.FirstParser.pop_next_token(tokens)
+        second = parse_expression(tokens)
+        return AdditionObject(first, second)
+    elif isinstance(symbol, Negation):
+        FP.FirstParser.pop_next_token(tokens)
+        second = parse_expression(tokens)
+        return AdditionObject(first, NegationObject(second))
+
+    return first
+#    raise ParserException('Term', next_token)
+
+
+def parse_term(tokens):
+    #next_token = FP.FirstParser.pop_next_token(tokens)
+    #if isinstance(next_token, Factor):
+    first = parse_factor(tokens)
+    symbol = FP.FirstParser.get_next_token(tokens)  # Not popped
+    if isinstance(symbol, Multiplication):
+        FP.FirstParser.pop_next_token(tokens)
+        second = parse_term(tokens)
+        return MultiplicationObject(first, second)
+    elif isinstance(symbol, Division):
+        FP.FirstParser.pop_next_token(tokens)
+        second = parse_term(tokens)
+        return DivisionObject(first, second)
+    return first
+#   raise ParserException('Factor', next_token)
+
+
+def parse_factor(tokens):
     next_token = FP.FirstParser.pop_next_token(tokens)
-    if isinstance(next_token, UnOp):
+    if isinstance(next_token, Paren.LParen):
+        return_expression = parse_expression(tokens)
+        next_token = FP.FirstParser.pop_next_token(tokens)
+        if isinstance(next_token, Paren.RParen):
+            return return_expression
+
+        raise ParserException(Paren.RParen, next_token)
+
+    elif isinstance(next_token, UnOp):
         return parse_UnOp(next_token, tokens)
     elif isinstance(next_token, Constant):
+
         return parse_constant(next_token, tokens)
     elif isinstance(next_token, Semicolon):
         return SemicolonObject(tokens)
 
-    raise ParserException('Expression', next_token)
-
+    raise ParserException('Factor', next_token)
 
 def parse_UnOp(token, tokens):
     if isinstance(token, Negation):
@@ -114,12 +166,36 @@ def parse_UnOp(token, tokens):
 
 
 def parse_negation(tokens):
-    return NegationObject(parse_expression(tokens))
+    return NegationObject(parse_factor(tokens))
 
 
 def parse_bitwise(tokens):
-    return BitwiseObject(parse_expression(tokens))
+    return BitwiseObject(parse_factor(tokens))
 
 
 def parse_logical_negation(tokens):
-    return LogicalNegationObject(parse_expression(tokens))
+    return LogicalNegationObject(parse_factor(tokens))
+
+#Stage 3
+
+def parse_BinOp(token, tokens):
+    if isinstance(token, Addition):
+        return parse_addition(tokens)
+    elif isinstance(token, Multiplication):
+        return parse_multiplication(tokens)
+    elif isinstance(token, Division):
+        return parse_division(tokens)
+
+    raise ParserException(BinOp, token)
+
+
+def parse_addition(tokens):
+    raise NotImplemented()
+
+
+def parse_multiplication(tokens):
+    raise NotImplemented()
+
+
+def parse_division(tokens):
+    raise NotImplemented()
