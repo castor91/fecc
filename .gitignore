@@ -1,7 +1,11 @@
 .idea/*
 bin/*
 src/*.pyc
-src/fecc_tokens/*.pyc
+src/fecc_code_generator/*.pyc
+src/fecc_code_optimization/*.pyc
 src/fecc_exceptions/*.pyc
-src/EasyLexerPackage/*.pyc
+src/fecc_instructions/*.pyc
+src/fecc_lexer/*.pyc
 src/fecc_object/*.pyc
+src/fecc_tokens/*.pyc
+src/fecc_parser/*.pyc
