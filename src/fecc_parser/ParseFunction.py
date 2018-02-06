@@ -99,39 +99,32 @@ def parse_constant(constant, tokens):
 
 #Stage 2
 def parse_expression(tokens):
-    #next_token = FP.FirstParser.pop_next_token(tokens)
-    #if isinstance(next_token, Term):
     first = parse_term(tokens)
     symbol = FP.FirstParser.get_next_token(tokens)
-    #while isinstance(symbol, Addition) or isinstance(symbol, Negation):
-    if isinstance(symbol, Addition):
-        FP.FirstParser.pop_next_token(tokens)
-        second = parse_expression(tokens)
-        return AdditionObject(first, second)
-    elif isinstance(symbol, Negation):
-        FP.FirstParser.pop_next_token(tokens)
-        second = parse_expression(tokens)
-        return AdditionObject(first, NegationObject(second))
+    while isinstance(symbol, Addition) or isinstance(symbol, Negation):
+        symbol = FP.FirstParser.pop_next_token(tokens)
+        second = parse_term(tokens)
+        first = AdditionObject(first, second if isinstance(symbol, Addition) else NegationObject(second))
+
+        symbol = FP.FirstParser.get_next_token(tokens)
 
     return first
-#    raise ParserException('Term', next_token)
 
 
 def parse_term(tokens):
-    #next_token = FP.FirstParser.pop_next_token(tokens)
-    #if isinstance(next_token, Factor):
     first = parse_factor(tokens)
-    symbol = FP.FirstParser.get_next_token(tokens)  # Not popped
-    if isinstance(symbol, Multiplication):
-        FP.FirstParser.pop_next_token(tokens)
-        second = parse_term(tokens)
-        return MultiplicationObject(first, second)
-    elif isinstance(symbol, Division):
-        FP.FirstParser.pop_next_token(tokens)
-        second = parse_term(tokens)
-        return DivisionObject(first, second)
+    symbol = FP.FirstParser.get_next_token(tokens)
+    while isinstance(symbol, Multiplication) or isinstance(symbol, Division):
+        symbol = FP.FirstParser.pop_next_token(tokens)
+        second = parse_factor(tokens)
+        if isinstance(symbol, Multiplication):
+            first = MultiplicationObject(first, second)
+        else:
+            first = DivisionObject(first, second)
+
+        symbol = FP.FirstParser.get_next_token(tokens)
+
     return first
-#   raise ParserException('Factor', next_token)
 
 
 def parse_factor(tokens):
@@ -153,6 +146,7 @@ def parse_factor(tokens):
         return SemicolonObject(tokens)
 
     raise ParserException('Factor', next_token)
+
 
 def parse_UnOp(token, tokens):
     if isinstance(token, Negation):
