@@ -23,10 +23,8 @@ logical_and_regex = r'^(\s*)(&&)'
 logical_or_regex = r'^(\s*)(\|\|)'
 eq_regex = r'^(\s*)(==)'
 neq_regex = r'^(\s*)(\!=)'
-lte_regex = r'^(\s*)(<=)'
-lt_regex = r'^(\s*)(<)'
-gte_regex = r'^(\s*)(>=)'
-gt_regez = r'^(\s*)(>)'
+lte_regex = r'^(\s*)(<=|<)'
+gte_regex = r'^(\s*)(>=|>)'
 
 
 #Stage 1
@@ -52,9 +50,7 @@ logical_or_regex_compiled = re.compile(logical_or_regex)
 eq_regex_compiled = re.compile(eq_regex)
 neq_regex_compiled = re.compile(neq_regex)
 lte_regex_compiled = re.compile(lte_regex)
-lt_regex_compiled = re.compile(lt_regex)
 gte_regex_compiled = re.compile(gte_regex)
-gt_regex_compiled = re.compile(gt_regez)
 
 #Final
 regexs = {string_regex_compiled: MF.string_match,
@@ -76,7 +72,5 @@ regexs = {string_regex_compiled: MF.string_match,
           eq_regex_compiled: MF.eq_match,
           neq_regex_compiled: MF.neq_match,
           lte_regex_compiled: MF.lte_match,
-          lt_regex_compiled: MF.lt_match,
           gte_regex_compiled: MF.gte_match,
-          gt_regex_compiled: MF.gt_match,
 }

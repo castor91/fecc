@@ -19,3 +19,10 @@ from String import String as String
 from ADD import ADD as ADD
 from iMUL import iMUL as iMUL
 from iDIV import iDIV as iDIV
+from SETG import SETG as SETG
+from SETGE import SETGE as SETGE
+from SETL import SETL as SETL
+from SETLE import SETLE as SETLE
+from SETNE import SETNE as SETNE
+from AND import AND as AND
+from OR import OR as OR

@@ -89,17 +89,8 @@ def neq_match(_):
     return Neq()
 
 
-def lte_match(_):
-    return Lte()
+def lte_match(word):
+    return Lte() if word == '<=' else Lt()
 
-
-def lt_match(_):
-    return Lt()
-
-
-def gte_match(_):
-    return Gte()
-
-
-def gt_match(_):
-    return Gt()
+def gte_match(word):
+    return Gte() if word == '>=' else Gt()

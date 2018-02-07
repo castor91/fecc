@@ -8,7 +8,7 @@ class AbstractObject:
         self._value = value
 
     def __str__(self):
-        return '{}{}{}'.format(self.__class__.__name__.upper()[:3], ' ' if self._value is not None else '', self._value)
+        return '{}{}{}'.format(self.__class__.__name__.upper()[:3], ' ' if self._value is not None else '', str(self._value))
 
     @abstractmethod
     def generate(self, out_code):
