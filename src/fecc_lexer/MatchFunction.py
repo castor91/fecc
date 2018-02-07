@@ -11,6 +11,14 @@ from fecc_tokens.LogicalNegation import LogicalNegation
 from fecc_tokens.Addition import Addition
 from fecc_tokens.Multiplication import Multiplication
 from fecc_tokens.Division import Division
+from fecc_tokens.LogicalAnd import LogicalAnd
+from fecc_tokens.LogicalOr import LogicalOr
+from fecc_tokens.Eq import Eq
+from fecc_tokens.Neq import Neq
+from fecc_tokens.Lte import Lte
+from fecc_tokens.Lt import Lt
+from fecc_tokens.Gte import Gte
+from fecc_tokens.Gt import Gt
 
 #Stage 1
 def string_match(word):
@@ -63,3 +71,35 @@ def multiplication_match(_):
 
 def division_match(_):
     return Division()
+
+#Stage 4
+def logical_and_match(_):
+    return LogicalAnd()
+
+
+def logical_or_match(_):
+    return LogicalOr()
+
+
+def eq_match(_):
+    return Eq()
+
+
+def neq_match(_):
+    return Neq()
+
+
+def lte_match(_):
+    return Lte()
+
+
+def lt_match(_):
+    return Lt()
+
+
+def gte_match(_):
+    return Gte()
+
+
+def gt_match(_):
+    return Gt()
