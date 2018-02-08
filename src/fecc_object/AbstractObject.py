@@ -1,5 +1,5 @@
 from abc import ABCMeta, abstractmethod
-from fecc_instructions import *
+from src.fecc_instructions import *
 
 class AbstractObject:
     __metaclass__ = ABCMeta

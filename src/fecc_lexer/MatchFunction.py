@@ -1,4 +1,4 @@
-from fecc_tokens import *
+from src.fecc_tokens import *
 
 #Stage 1
 def string_match(word):

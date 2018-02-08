@@ -1,7 +1,6 @@
-from fecc_object import *
-from fecc_tokens import *
-
-from fecc_exceptions.ParserException import ParserException
+from src.fecc_object import *
+from src.fecc_tokens import *
+from src.fecc_exceptions.ParserException import ParserException
 import FirstParser as FP
 
 

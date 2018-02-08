@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 
-from fecc_lexer.EasyLexer import EasyLexer
-#from first_object.FirstParser import FirstParser
-from fecc_parser.FirstParser import FirstParser
-from fecc_code_generator.FirstCodeGenerator import FirstCodeGenerator
-from fecc_code_optimization.DumbCodeOptimization import DumbCodeOptimization
+from src.fecc_lexer.EasyLexer import EasyLexer
+from src.fecc_parser.FirstParser import FirstParser
+from src.fecc_code_generator.FirstCodeGenerator import FirstCodeGenerator
+from src.fecc_code_optimization.DumbCodeOptimization import DumbCodeOptimization
 
 from sys import argv
 from os import system, path
