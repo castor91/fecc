@@ -26,6 +26,8 @@ lte_regex = r'^(\s*)(<=|<)'
 gte_regex = r'^(\s*)(>=|>)'
 modulo_regex = r'(\s*)(%)'
 
+#Stage 5
+assign_regex = r'(\s*)(=)'
 
 #Stage 1
 string_regex_compiled = re.compile(string_regex)
@@ -52,6 +54,9 @@ lte_regex_compiled = re.compile(lte_regex)
 gte_regex_compiled = re.compile(gte_regex)
 modulo_regex_compiled = re.compile(modulo_regex)
 
+#Stage 5
+assign_regex_compiled = re.compile(assign_regex)
+
 #Final
 regexs = {string_regex_compiled: MF.string_match,
           number_regex_compiled: MF.number_match,
@@ -73,4 +78,6 @@ regexs = {string_regex_compiled: MF.string_match,
           gte_regex_compiled: MF.gte_match,
           modulo_regex_compiled: MF.modulo_match,
           logical_negation_neq_regex_compiled: MF.logical_negation_neq_match,
+
+          assign_regex_compiled: MF.assign_match,
 }

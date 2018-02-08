@@ -81,3 +81,7 @@ def modulo_match(_):
 
 def logical_negation_neq_match(word):
     return logical_negation_match(word) if word == '!' else neq_match(word)
+
+#Stage 5
+def assign_match(_):
+    return Assign()

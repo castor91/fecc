@@ -9,4 +9,4 @@ class ReturnObject(AbstractObject):
         self._value.generate(out_code)
 
         out_code.append(POP('eax'))
-        out_code.append(RET())
+        #out_code.append(RET()) # This is done by FunctionObject

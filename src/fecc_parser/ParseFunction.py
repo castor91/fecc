@@ -85,17 +85,19 @@ def parse_expression(tokens):
 
     return first
 
-#<term> ::= <factor> { ("*" | "/") <factor> }
+#<term> ::= <factor> { ("*" | "/" | "%") <factor> }
 def parse_term(tokens):
     first = parse_factor(tokens)
     symbol = FP.FirstParser.get_next_token(tokens)
-    while isinstance(symbol, Multiplication) or isinstance(symbol, Division):
+    while isinstance(symbol, Multiplication) or isinstance(symbol, Division) or isinstance(symbol, Modulo):
         symbol = FP.FirstParser.pop_next_token(tokens)
         second = parse_factor(tokens)
         if isinstance(symbol, Multiplication):
             first = MultiplicationObject(first, second)
-        else:
+        elif isinstance(symbol, Division):
             first = DivisionObject(first, second)
+        elif isinstance(symbol, Modulo):
+            first = ModuloObject(first, second)
 
         symbol = FP.FirstParser.get_next_token(tokens)
 
@@ -145,30 +147,7 @@ def parse_bitwise(tokens):
 def parse_logical_negation(tokens):
     return LogicalNegationObject(parse_factor(tokens))
 
-#Stage 3
-'''
-def parse_BinOp(token, tokens):
-    if isinstance(token, Addition):
-        return parse_addition(tokens)
-    elif isinstance(token, Multiplication):
-        return parse_multiplication(tokens)
-    elif isinstance(token, Division):
-        return parse_division(tokens)
 
-    raise ParserException(BinOp, token)
-
-
-def parse_addition(tokens):
-    raise NotImplemented()
-
-
-def parse_multiplication(tokens):
-    raise NotImplemented()
-
-
-def parse_division(tokens):
-    raise NotImplemented()
-'''
 #Stage 4
 #<logical-and-exp> ::= <equality-exp> { "&&" <equality-exp> }
 def parse_logical_and(tokens):
