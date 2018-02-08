@@ -1,29 +1,16 @@
-from Addition import Addition as Addition
-from BinOp import BinOp as BinOp
-from Bitwise import Bitwise as Bitwise
-from Constant import Constant as Constant
-from Division import Division as Division
-from EOF import EOF as EOF
-from Eq import Eq as Eq
-from Gt import Gt as Gt
-from Gte import Gte as Gte
-from Identifier import Identifier as Identifier
-from LogicalAnd import LogicalAnd as LogicalAnd
-from LogicalNegation import LogicalNegation as LogicalNegation
-from LogicalOr import LogicalOr as LogicalOr
-from Lt import Lt as Lt
-from Lte import Lte as Lte
-from Multiplication import Multiplication as Multiplication
-from Modulo import Modulo as Modulo
-from Negation import Negation as Negation
-from Neq import Neq as Neq
-from Paren import Paren as Paren
+import os
+
+
+module_name = os.path.dirname(os.path.relpath(__file__))
+names = filter(lambda x: not x.endswith('.pyc'), [name for name in os.listdir(module_name) if name not in ['__init__.py']])
+
+for name in names:
+    globals()[name[:-3]] = getattr(__import__(name[:-3], globals(), locals(), [name], -1), name[:-3])
+
+# TODO refactoring for dynamic include all parens
 from Paren import LParen as LParen
 from Paren import RParen as RParen
 from Paren import LBrace as LBrace
 from Paren import RBrace as RBrace
-from Return import Return as Return
-from Semicolon import Semicolon as Semicolon
-from SOF import SOF as SOF
-from Type import Type as Type
-from UnOp import UnOp as UnOp
+
+

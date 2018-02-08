@@ -1,23 +1,8 @@
-from AbstractObject import AbstractObject as AbstractObject
-from AdditionObject import AdditionObject as AdditionObject
-from BitwiseObject import BitwiseObject as BitwiseObject
-from ConstantObject import ConstantObject as ConstantObject
-from DivisionObject import DivisionObject as DivisionObject
-from EOFObject import EOFObject as EOFObject
-from EqObject import EqObject as EqObject
-from FunctionObject import FunctionObject as FunctionObject
-from GteObject import GteObject as GteObject
-from GtObject import GtObject as GtObject
-from IdentifierObject import IdentifierObject as IdentifierObject
-from LogicalAndObject import LogicalAndObject as LogicalAndObject
-from LogicalNegationObject import LogicalNegationObject as LogicalNegationObject
-from LogicalOrObject import LogicalOrObject as LogicalOrObject
-from LteObject import LteObject as LteObject
-from LtObject import LtObject as LtObject
-from MultiplicationObject import MultiplicationObject as MultiplicationObject
-from NegationObject import NegationObject as NegationObject
-from NeqObject import NeqObject as NeqObject
-from ReturnObject import ReturnObject as ReturnObject
-from SemicolonObject import SemicolonObject as SemicolonObject
-from SOFObject import SOFObject as SOFObject
-from TypeObject import TypeObject as TypeObject
+import os
+
+
+module_name = os.path.dirname(os.path.relpath(__file__))
+names = filter(lambda x: not x.endswith('.pyc'), [name for name in os.listdir(module_name) if name not in ['__init__.py']])
+
+for name in names:
+    globals()[name[:-3]] = getattr(__import__(name[:-3], globals(), locals(), [name], -1), name[:-3])
