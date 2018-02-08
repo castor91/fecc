@@ -1,17 +1,23 @@
-'''
-from fecc_instructions.AbstractCompareInstruction import AbstractCompareInstruction as AbstractCompareInstruction
-from fecc_instructions.AbstractGenericInstruction import AbstractGenericInstruction as AbstractGenericInstruction
-from fecc_instructions.AbstractMemoryInstruction import AbstractMemoryInstruction as AbstractMemoryInstruction
-from fecc_instructions.AbstractMoveInstruction import AbstractMoveInstruction as AbstractMoveInstruction
-from fecc_instructions.AbstractUnOpInstruction import AbstractUnOpInstruction as AbstractUnOpInstruction
-
-from fecc_instructions.CMPL import CMPL as CMPL
-from fecc_instructions.GLOBL import GLOBL as GLOBL
-from fecc_instructions.MOVL import MOVL as MOVL
-from fecc_instructions.NEG import NEG as NEG
-from fecc_instructions.NOT import NOT as NOT
-from fecc_instructions.POP import POP as POP
-from fecc_instructions.PUSH import PUSH as PUSH
-from fecc_instructions.RET import RET as RET
-from fecc_instructions.SETE import SETE as SETE
-'''
+from AbstractObject import AbstractObject as AbstractObject
+from AdditionObject import AdditionObject as AdditionObject
+from BitwiseObject import BitwiseObject as BitwiseObject
+from ConstantObject import ConstantObject as ConstantObject
+from DivisionObject import DivisionObject as DivisionObject
+from EOFObject import EOFObject as EOFObject
+from EqObject import EqObject as EqObject
+from FunctionObject import FunctionObject as FunctionObject
+from GteObject import GteObject as GteObject
+from GtObject import GtObject as GtObject
+from IdentifierObject import IdentifierObject as IdentifierObject
+from LogicalAndObject import LogicalAndObject as LogicalAndObject
+from LogicalNegationObject import LogicalNegationObject as LogicalNegationObject
+from LogicalOrObject import LogicalOrObject as LogicalOrObject
+from LteObject import LteObject as LteObject
+from LtObject import LtObject as LtObject
+from MultiplicationObject import MultiplicationObject as MultiplicationObject
+from NegationObject import NegationObject as NegationObject
+from NeqObject import NeqObject as NeqObject
+from ReturnObject import ReturnObject as ReturnObject
+from SemicolonObject import SemicolonObject as SemicolonObject
+from SOFObject import SOFObject as SOFObject
+from TypeObject import TypeObject as TypeObject

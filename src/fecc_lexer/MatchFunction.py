@@ -1,24 +1,4 @@
-from fecc_tokens.Semicolon import Semicolon
-from fecc_tokens.Paren import Paren
-from fecc_tokens.Constant import Constant
-from fecc_tokens.Identifier import Identifier
-from fecc_tokens.Type import Type
-from fecc_tokens.Return import Return
-from fecc_tokens.EOF import EOF
-from fecc_tokens.Negation import Negation
-from fecc_tokens.Bitwise import Bitwise
-from fecc_tokens.LogicalNegation import LogicalNegation
-from fecc_tokens.Addition import Addition
-from fecc_tokens.Multiplication import Multiplication
-from fecc_tokens.Division import Division
-from fecc_tokens.LogicalAnd import LogicalAnd
-from fecc_tokens.LogicalOr import LogicalOr
-from fecc_tokens.Eq import Eq
-from fecc_tokens.Neq import Neq
-from fecc_tokens.Lte import Lte
-from fecc_tokens.Lt import Lt
-from fecc_tokens.Gte import Gte
-from fecc_tokens.Gt import Gt
+from fecc_tokens import *
 
 #Stage 1
 def string_match(word):
@@ -73,13 +53,11 @@ def division_match(_):
     return Division()
 
 #Stage 4
-def logical_and_match(_):
-    return LogicalAnd()
+def logical_and_match(word):
+    return LogicalAnd() if word == '&&' else BitwiseAnd()
 
-
-def logical_or_match(_):
-    return LogicalOr()
-
+def logical_or_match(word):
+    return LogicalOr() if word == '||' else  BitwiseOr()
 
 def eq_match(_):
     return Eq()
@@ -92,5 +70,14 @@ def neq_match(_):
 def lte_match(word):
     return Lte() if word == '<=' else Lt()
 
+
 def gte_match(word):
     return Gte() if word == '>=' else Gt()
+
+
+def modulo_match(_):
+    return Modulo()
+
+
+def logical_negation_neq_match(word):
+    return logical_negation_match(word) if word == '!' else neq_match(word)

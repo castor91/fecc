@@ -8,12 +8,12 @@ from fecc_exceptions.LexerException import LexerException
 class EasyLexer:
     def __init__(self, input_string):
         print '[+] Lexer {}'.format(self.__class__.__name__)
-        self._input = input_string + '\n' #Add final new line
+        self._input = input_string + '\n'
         self._tokens = [SOF()]
 
     def lex(self):
         local_input = self._input
-
+        #print [x[1].__class__ for x in Regex.regexs.items()]
         while not isinstance(self._tokens[-1], EOF):
             flag = False
             if len(local_input) == 0:
@@ -25,8 +25,8 @@ class EasyLexer:
                     local_input = local_input[token.end():]
                     flag = True
                     break
-            #TODO refactoring 
+            #TODO refactoring
             if not flag:
-                raise LexerException()
+                raise LexerException(local_input)
 
         return self._tokens
