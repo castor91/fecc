@@ -103,7 +103,7 @@ def parse_term(tokens):
 
     return first
 
-#<factor> ::= "(" <exp> ")" | <unary_op> <factor> | <int>
+#<factor> ::= "(" <exp> ")" | <unary_op> <factor> | <int> | <id>
 def parse_factor(tokens):
     next_token = FP.FirstParser.pop_next_token(tokens)
     if isinstance(next_token, LParen):
@@ -117,7 +117,6 @@ def parse_factor(tokens):
     elif isinstance(next_token, UnOp):
         return parse_UnOp(next_token, tokens)
     elif isinstance(next_token, Constant):
-
         return parse_constant(next_token, tokens)
     elif isinstance(next_token, Semicolon):
         return SemicolonObject(tokens)
