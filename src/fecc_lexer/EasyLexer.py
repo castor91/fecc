@@ -25,7 +25,7 @@ class EasyLexer:
                     local_input = local_input[token.end():]
                     flag = True
                     break
-            #TODO refactoring
+            #TODO refactoring with ELSE
             if not flag:
                 raise LexerException(local_input)
 

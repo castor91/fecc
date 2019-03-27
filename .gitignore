@@ -11,3 +11,5 @@ src/fecc_tokens/*.pyc
 src/fecc_parser/*.pyc
 .gdb_history
 peda-session-bit.s.txt
+venv/*
+bin/*

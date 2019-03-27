@@ -5,13 +5,20 @@ from src.fecc_parser.FirstParser import FirstParser
 from src.fecc_code_generator.FirstCodeGenerator import FirstCodeGenerator
 from src.fecc_code_optimization.DumbCodeOptimization import DumbCodeOptimization
 
-from sys import argv
 from os import system, path
+import argparse
+
 
 if __name__ == '__main__':
-    print 'Fast Easy C Compiler [fecc]'
-    input_file = argv[1]
-    output_file = '{}'.format(path.splitext(input_file)[0]) if len(argv) == 2 else argv[2]
+    arg_parser = argparse.ArgumentParser(description='Fast Easy C Compiler [fecc]')
+    arg_parser.add_argument('input_file', help='Input file')
+    arg_parser.add_argument('-o', '--output_file', help='Output file', default=False)
+    arg_parser.add_argument('-v', '--verbose', help='[I think is PRINT]', default=False)
+
+    args = arg_parser.parse_args()
+    input_file = args.input_file
+    output_file = args.output_file if args.output_file else 'a.out'
+
     with open('{}'.format(input_file), 'r') as infile, open('{}.s'.format(output_file), 'w') as outfile:
         input_string = ''.join(infile.readlines())
 
@@ -19,14 +26,14 @@ if __name__ == '__main__':
         lexer = EasyLexer(input_string)
         tokens = lexer.lex()
 
-        if '-p' in argv:
+        if args.verbose:
             for t in tokens:
                 print t,
             print
         #Parser
         parser = FirstParser()
         codes = parser.parseProgram(tokens)
-        if '-p' in argv:
+        if args.verbose:
             for c in codes:
                 print c
 
