@@ -1,0 +1,5 @@
+# Debian/Ubuntu
+apt install gcc-multilib
+
+# Fedora/Centos/RHEL
+yum install glibc-devel
